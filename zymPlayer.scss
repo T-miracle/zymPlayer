@@ -42,10 +42,13 @@
 				height: 66px;
 				width: 66px;
 				cursor: pointer;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				overflow: hidden;
 
 				// 歌曲图片
 				.album-art {
-					width: 100%;
 					height: 100%;
 					pointer-events: none;
 					user-select: none;
@@ -675,7 +678,9 @@
 			border-radius: 50%;
 			overflow: hidden;
 			border: 36px solid #0000003d;
-			display: block;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 			animation: rotate 30s linear infinite;
 			animation-play-state: paused;
 			user-select: none;
@@ -697,7 +702,6 @@
 			}
 
 			img {
-				width: 100%;
 				height: 100%;
 				user-select: none;
 				cursor: pointer;

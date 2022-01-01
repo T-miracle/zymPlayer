@@ -176,6 +176,7 @@ function init() {
 		Array.from(document.getElementsByClassName('amplitude-toggle')).forEach((el) => {
 			el.style.display = 'none';
 		});
+		Amplitude.setRepeat(true);
 		if (mode === 'order') {
 			Amplitude.setRepeat(false);
 			Array.from(document.getElementsByClassName('amplitude-repeat')).forEach((el) => {
@@ -183,7 +184,6 @@ function init() {
 			});
 		}
 		if (mode === 'list') {
-			Amplitude.setRepeat(true);
 			Array.from(document.getElementsByClassName('amplitude-repeat')).forEach((el) => {
 				el.style.display = '';
 			});

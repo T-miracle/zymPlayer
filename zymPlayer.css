@@ -101,6 +101,8 @@
           user-select: none;
   position: relative;
   top: -4px;
+  font-size: 14px;
+  line-height: 16px;
 }
 
 #amplitude-player .player-box .player-container .right-container div.song-duration-time {

@@ -39,41 +39,36 @@ function init() {
 	playerBox.setAttribute('id', 'amplitude-player');
 	playerBox.setAttribute('class', 'amplitude-player-component');
 	// 播放器添加元素
-	playerBox.innerHTML =
-		'<div class="player-box">' +
-		'	<div class="player-container">' +
-		'		<div class="left-container"><img data-amplitude-song-info="cover_art_url" class="album-art"/></div>' +
-		'		<div class="right-container">' +
-		'   		<div class="song-name-box"><span data-amplitude-song-info="name" class="song-name"/></div>' +
-		'			<div id="central-control-container">' +
-		'				<div class="amplitude-prev" id="previous"></div>' +
-		'				<div class="amplitude-play-pause"></div>' +
-		'				<div class="amplitude-next" id="next"></div>' +
-		'				<div id="volume-container">' +
-		'					<div class="volume-controls">' +
-		'						<div class="amplitude-mute amplitude-not-muted"></div>' +
-		'						<input type="range" class="amplitude-volume-slider"/>' +
-		'						<div class="ms-range-fix"></div>' +
-		'					</div>' +
-		'				</div>' +
-		'				<div class="amplitude-toggle amplitude-repeat"></div>' +
-		'				<div class="amplitude-toggle amplitude-repeat-song"></div>' +
-		'				<div class="amplitude-toggle amplitude-shuffle"></div>' +
-		'				<div id="amplitude-menu"></div>' +
-		'			</div>' +
-		// ' 			<div class="song-duration-time">' +
-		// '				<span>00:00</span>' +
-		// '				<span><span class="amplitude-per-minutes"/>:<span class="amplitude-per-seconds"/></span>' +
-		// '				<span><span class="amplitude-duration-minutes"/>:<span class="amplitude-duration-seconds"/></span>' +
-		// '			</div>' +
-		'   		<div id="progress-container">' +
-		' 				<input type="range" class="amplitude-song-slider"/>' +
-		'    			<progress id="song-played-progress" class="amplitude-song-played-progress"></progress>' +
-		'				<progress id="song-buffered-progress" class="amplitude-buffered-progress" value="0"></progress>' +
-		'  			</div>' +
-		'		</div>' +
-		'	</div>' +
-		'</div>';
+	playerBox.innerHTML = `
+		<div class="player-box">
+			<div class="player-container">
+				<div class="left-container"><img data-amplitude-song-info="cover_art_url" class="album-art"/></div>
+				<div class="right-container">
+		   		<div class="song-name-box"><span data-amplitude-song-info="name" class="song-name"/></div>
+					<div id="central-control-container">
+						<div class="amplitude-prev" id="previous"></div>
+						<div class="amplitude-play-pause"></div>
+						<div class="amplitude-next" id="next"></div>
+						<div id="volume-container">
+							<div class="volume-controls">
+								<div class="amplitude-mute amplitude-not-muted"></div>
+								<input type="range" class="amplitude-volume-slider"/>
+								<div class="ms-range-fix"></div>
+							</div>
+						</div>
+						<div class="amplitude-toggle amplitude-repeat"></div>
+						<div class="amplitude-toggle amplitude-repeat-song"></div>
+						<div class="amplitude-toggle amplitude-shuffle"></div>
+						<div id="amplitude-menu"></div>
+					</div>
+		   		<div id="progress-container">
+		 				<input type="range" class="amplitude-song-slider"/>
+		    			<progress id="song-played-progress" class="amplitude-song-played-progress"></progress>
+						<progress id="song-buffered-progress" class="amplitude-buffered-progress" value="0"></progress>
+		  			</div>
+				</div>
+			</div>
+		</div>`;
 	// 将播放器盒子放在父元素里面
 	document.querySelector(playerElement).append(playerBox);
 	let tempDom = document.createElement('div');
@@ -92,36 +87,36 @@ function init() {
 	_songListBoxDom.append(_songListDom);
 	document.querySelector(playerElement).append(_songListBoxDom);
 	// 全屏
-	let _playerFullScreenDom = document.createElement('div');
-	_playerFullScreenDom.setAttribute('id', 'amplitude-player-full-screen');
-	_playerFullScreenDom.setAttribute('class', 'amplitude-player-component');
-	_playerFullScreenDom.innerHTML =
-		'	<img data-amplitude-song-info="cover_art_url"/>' +
-		'	<div class="screen-container">' +
-		'		<div class="close-btn"></div>' +
-		'		<div class="img-box">' +
-		'			<img data-amplitude-song-info="cover_art_url" class="album-art"/>' +
-		'		</div>' +
-		'   	<div data-amplitude-song-info="name" class="song-name2"></div>' +
-		'   	<div data-amplitude-song-info="artist" class="song-artist2"></div>' +
-		'		<div class="central-control-container">' +
-		'			<div class="amplitude-toggle amplitude-repeat"></div>' +
-		'			<div class="amplitude-toggle amplitude-repeat-song"></div>' +
-		'			<div class="amplitude-toggle amplitude-shuffle"></div>' +
-		'			<div class="amplitude-prev" id="previous"></div>' +
-		'			<div class="amplitude-play-pause"></div>' +
-		'			<div class="amplitude-next" id="next"></div>' +
-		'			<div class="amplitude-menu" id="menu2"></div>' +
-		'		</div>' +
-		'   	<div id="progress-container">' +
-		' 			<span class="running-time"><span class="amplitude-per-minutes"></span>:<span class="amplitude-per-seconds"></span></span>' +
-		' 			<input type="range" class="amplitude-song-slider"/>' +
-		'    		<progress id="song-played-progress" class="amplitude-song-played-progress"></progress>' +
-		'			<progress id="song-buffered-progress" class="amplitude-buffered-progress" value="0"></progress>' +
-		'			<span class="duration-time"><span class="amplitude-duration-minutes"></span>:<span class="amplitude-duration-seconds"></span></span>' +
-		'  		</div>' +
-		'  	</div>';
-	document.querySelector(playerElement).append(_playerFullScreenDom);
+	document.querySelector(playerElement).insertAdjacentHTML(
+		'beforeend',
+		`<div id="amplitude-player-full-screen" class="amplitude-player-component">
+			<img data-amplitude-song-info="cover_art_url"/>
+			<div class="screen-container">
+				<div class="close-btn"></div>
+				<div class="img-box">
+					<img data-amplitude-song-info="cover_art_url" class="album-art"/>
+				</div>
+				<div data-amplitude-song-info="name" class="song-name2"></div>
+				<div data-amplitude-song-info="artist" class="song-artist2"></div>
+				<div class="central-control-container">
+					<div class="amplitude-toggle amplitude-repeat"></div>
+					<div class="amplitude-toggle amplitude-repeat-song"></div>
+					<div class="amplitude-toggle amplitude-shuffle"></div>
+					<div class="amplitude-prev" id="previous"></div>
+					<div class="amplitude-play-pause"></div>
+					<div class="amplitude-next" id="next"></div>
+					<div class="amplitude-menu" id="menu2"></div>
+				</div>
+				<div id="progress-container">
+					<span class="running-time"><span class="amplitude-per-minutes"></span>:<span class="amplitude-per-seconds"></span></span>
+					<input type="range" class="amplitude-song-slider"/>
+					<progress id="song-played-progress" class="amplitude-song-played-progress"></progress>
+					<progress id="song-buffered-progress" class="amplitude-buffered-progress" value="0"></progress>
+					<span class="duration-time"><span class="amplitude-duration-minutes"></span>:<span class="amplitude-duration-seconds"></span></span>
+				</div>
+			</div>
+		</div>`
+	);
 	let _fullScreenSonglistDom = document.createElement('div');
 	_fullScreenSonglistDom.setAttribute('id', 'list2');
 	_fullScreenSonglistDom.setAttribute('class', 'song-list');
@@ -142,21 +137,12 @@ function init() {
 				_songListDoms.forEach((el) => {
 					el.insertAdjacentHTML(
 						'beforeend',
-						'	 <div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="' +
-							idx +
-							'" title="' +
-							_data[idx].name +
-							'&emsp;-&emsp;' +
-							_data[idx].artist +
-							'">' +
-							'	<span class="song-select"></span>' +
-							'	<span class="song-title">' +
-							_data[idx].name +
-							'	</span>' +
-							'	<span class="song-artist">&emsp;-&emsp;' +
-							_data[idx].artist +
-							'	</span>' +
-							'</div>'
+						`<div class="song amplitude-song-container amplitude-play-pause" 
+							data-amplitude-song-index="${idx}" title="${_data[idx].name}&emsp;-&emsp;${_data[idx].artist}">
+							<span class="song-select"></span>
+							<span class="song-title">${_data[idx].name}</span>
+							<span class="song-artist">&emsp;-&emsp;${_data[idx].artist}</span>
+						</div>`
 					);
 				});
 			}

@@ -15,9 +15,12 @@ var playerWidth,
 class zymAplayer {
 	constructor(obj) {
 		playerElement = obj['element'] || 'body';
+		playerWidth = obj['width'] || '300px';
+		mode = obj['mode'] || 'order'; // all cover none;
+		playerShow = obj['show'] || 'all'; // all cover none
 		let list = obj['list'];
 		listPath = list['path'];
-		listHeight = list['height'] || '320';
+		listHeight = list['height'] || 320;
 		listExpand = list['expand'] || false;
 		let position = obj['position'];
 		playerPosition = position['pos'];
@@ -25,9 +28,6 @@ class zymAplayer {
 		playerBottom = position['bottom'];
 		playerLeft = position['left'];
 		playerRight = position['right'];
-		playerWidth = obj['width'] || '300px';
-		playerShow = obj['show'] || 'all'; // all cover none
-		mode = obj['mode'] || 'order'; // all cover none;
 		init();
 	}
 }

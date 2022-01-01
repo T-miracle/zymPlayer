@@ -1,3 +1,8 @@
+const $ = document.querySelector.bind(document),
+	$$ = document.querySelectorAll.bind(document),
+	$id = document.getElementById.bind(document),
+	$class = document.getElementsByClassName.bind(document);
+
 var playerWidth,
 	playerElement,
 	playerPosition,
@@ -70,10 +75,10 @@ function init() {
 			</div>
 		</div>`;
 	// 将播放器盒子放在父元素里面
-	document.querySelector(playerElement).append(playerBox);
+	$(playerElement).appendChild(playerBox);
 	let tempDom = document.createElement('div');
 	tempDom.style.width = playerWidth;
-	document.querySelector('html').appendChild(tempDom);
+	$('html').appendChild(tempDom);
 	let _playerWidth = tempDom.offsetWidth;
 	_playerWidth = _playerWidth < 300 ? 300 : _playerWidth; // 播放器长度不能低于300
 	tempDom.remove();
@@ -84,10 +89,10 @@ function init() {
 	let _songListDom = document.createElement('div');
 	_songListDom.setAttribute('id', 'list1');
 	_songListDom.setAttribute('class', 'song-list');
-	_songListBoxDom.append(_songListDom);
-	document.querySelector(playerElement).append(_songListBoxDom);
+	_songListBoxDom.appendChild(_songListDom);
+	$(playerElement).appendChild(_songListBoxDom);
 	// 全屏
-	document.querySelector(playerElement).insertAdjacentHTML(
+	$(playerElement).insertAdjacentHTML(
 		'beforeend',
 		`<div id="amplitude-player-full-screen" class="amplitude-player-component">
 			<img data-amplitude-song-info="cover_art_url"/>
@@ -120,7 +125,7 @@ function init() {
 	let _fullScreenSonglistDom = document.createElement('div');
 	_fullScreenSonglistDom.setAttribute('id', 'list2');
 	_fullScreenSonglistDom.setAttribute('class', 'song-list');
-	document.getElementById('amplitude-player-full-screen').append(_fullScreenSonglistDom);
+	$id('amplitude-player-full-screen').appendChild(_fullScreenSonglistDom);
 	// 读取歌曲列表并初始化播放器
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', listPath, true); //true,false代表是否异步，一般都是true
@@ -131,21 +136,20 @@ function init() {
 			//xhr.status http请求结果的状态码
 			_data = JSON.parse(xhr.responseText);
 			//data 代表读取到的json中的数据
-			let _songListDoms = Array.from(document.getElementsByClassName('song-list'));
-			for (idx in _data) {
+			let _songlistHtml = '';
+			_data.map((song, idx) => {
 				// 拼接音乐列表
-				_songListDoms.forEach((el) => {
-					el.insertAdjacentHTML(
-						'beforeend',
-						`<div class="song amplitude-song-container amplitude-play-pause" 
-							data-amplitude-song-index="${idx}" title="${_data[idx].name}&emsp;-&emsp;${_data[idx].artist}">
-							<span class="song-select"></span>
-							<span class="song-title">${_data[idx].name}</span>
-							<span class="song-artist">&emsp;-&emsp;${_data[idx].artist}</span>
-						</div>`
-					);
-				});
-			}
+				_songlistHtml += `
+				<div class="song amplitude-song-container amplitude-play-pause" 
+					data-amplitude-song-index="${idx}" title="${song.name}&emsp;-&emsp;${song.artist}">
+					<span class="song-select"></span>
+					<span class="song-title">${song.name}</span>
+					<span class="song-artist">&emsp;-&emsp;${song.artist}</span>
+				</div>`;
+			});
+			Array.from($class('song-list')).forEach((el) => {
+				el.insertAdjacentHTML('beforeend', _songlistHtml);
+			});
 		}
 		// 初始化音乐播放器
 		Amplitude.init({
@@ -159,30 +163,30 @@ function init() {
 				sample_rate: 50,
 			},
 		});
-		Array.from(document.getElementsByClassName('amplitude-toggle')).forEach((el) => {
+		Array.from($class('amplitude-toggle')).forEach((el) => {
 			el.style.display = 'none';
 		});
 		Amplitude.setRepeat(true);
 		if (mode === 'order') {
 			Amplitude.setRepeat(false);
-			Array.from(document.getElementsByClassName('amplitude-repeat')).forEach((el) => {
+			Array.from($class('amplitude-repeat')).forEach((el) => {
 				el.style.display = '';
 			});
 		}
 		if (mode === 'list') {
-			Array.from(document.getElementsByClassName('amplitude-repeat')).forEach((el) => {
+			Array.from($class('amplitude-repeat')).forEach((el) => {
 				el.style.display = '';
 			});
 		}
 		if (mode === 'song') {
 			Amplitude.setRepeatSong(true);
-			Array.from(document.getElementsByClassName('amplitude-song-repeat')).forEach((el) => {
+			Array.from($class('amplitude-song-repeat')).forEach((el) => {
 				el.style.display = '';
 			});
 		}
 		if (mode === 'random') {
 			Amplitude.setShuffle(true);
-			Array.from(document.getElementsByClassName('amplitude-shuffle')).forEach((el) => {
+			Array.from($class('amplitude-shuffle')).forEach((el) => {
 				el.style.display = '';
 			});
 		}
@@ -200,10 +204,10 @@ function setSongTime() {
 	let per = Amplitude.getSongPlayedPercentage() || 0;
 	let minutes = Math.floor((duration * per) / 100 / 60) + '',
 		seconds = Math.floor(((duration * per) / 100) % 60) + '';
-	Array.from(document.getElementsByClassName('amplitude-per-minutes')).forEach((element) => {
+	Array.from($class('amplitude-per-minutes')).forEach((element) => {
 		element.innerText = minutes.length === 1 ? '0' + minutes : '' + minutes;
 	});
-	Array.from(document.getElementsByClassName('amplitude-per-seconds')).forEach((element) => {
+	Array.from($class('amplitude-per-seconds')).forEach((element) => {
 		element.innerText = seconds.length === 1 ? '0' + seconds : '' + seconds;
 	});
 }
@@ -212,51 +216,51 @@ function setSongTime() {
 function setPlayerElementPosition(width) {
 	// 根据配置设置播放器主体定位
 	if (playerPosition !== undefined) {
-		document.getElementById('amplitude-player').style.position = playerPosition;
+		$id('amplitude-player').style.position = playerPosition;
 	}
-	Array.from(document.getElementsByClassName('hide-btn')).forEach((el) => {
+	Array.from($class('hide-btn')).forEach((el) => {
 		el.remove();
 	});
-	let _playerBoxDom = Array.from(document.getElementsByClassName('player-box'))[0];
+	let _playerBoxDom = Array.from($class('player-box'))[0];
 	if (playerLeft !== undefined) {
 		_playerBoxDom.style.left = 0;
 		_playerBoxDom.style.right = '';
 		_playerBoxDom.insertAdjacentHTML('beforeend', '<div class="hide-btn"></div>');
-		let _playerDom = document.getElementById('amplitude-player');
+		let _playerDom = $id('amplitude-player');
 		_playerDom.style.left = playerLeft;
 		_playerDom.style.right = '';
-		let _leftContainerDom = Array.from(document.getElementsByClassName('left-container'))[0];
+		let _leftContainerDom = Array.from($class('left-container'))[0];
 		_leftContainerDom.style.float = 'right';
-		let _rightContainerDom = Array.from(document.getElementsByClassName('right-container'))[0];
+		let _rightContainerDom = Array.from($class('right-container'))[0];
 		_rightContainerDom.style.float = 'right';
-		Array.from(document.getElementsByClassName('hide-btn'))[0].classList.add('turn');
+		Array.from($class('hide-btn'))[0].classList.add('turn');
 	} else {
 		_playerBoxDom.style.left = '';
 		_playerBoxDom.style.right = 0;
 		_playerBoxDom.insertAdjacentHTML('afterbegin', '<div class="hide-btn"></div>');
-		Array.from(document.getElementsByClassName('left-container')).style.float = 'left';
-		Array.from(document.getElementsByClassName('right-container')).style.float = 'left';
+		Array.from($class('left-container')).style.float = 'left';
+		Array.from($class('right-container')).style.float = 'left';
 	}
 	if (playerRight !== undefined) {
-		let _playerDom = document.getElementById('amplitude-player');
+		let _playerDom = $id('amplitude-player');
 		_playerDom.style.left = '';
 		_playerDom.style.right = playerRight;
 	}
 	if (playerTop !== undefined) {
-		let _playerDom = document.getElementById('amplitude-player');
+		let _playerDom = $id('amplitude-player');
 		_playerDom.style.top = playerTop;
 		_playerDom.style.bottom = '';
 	}
 	if (playerBottom !== undefined) {
-		let _playerDom = document.getElementById('amplitude-player');
+		let _playerDom = $id('amplitude-player');
 		_playerDom.style.top = '';
 		_playerDom.style.bottom = playerBottom;
 	}
 	if (playerShow === 'all') {
-		let _playerDom = document.getElementById('amplitude-player');
+		let _playerDom = $id('amplitude-player');
 		_playerDom.style.width = width + 'px';
 	} else {
-		Array.from(document.getElementsByClassName('hide-btn')).classList.toggle('turn');
+		Array.from($class('hide-btn')).classList.toggle('turn');
 		listExpand = false;
 		if (playerLeft !== undefined) {
 			_playerBoxDom.style.left = playerShow === 'none' ? 20 - width + 'px' : 86 - width + 'px';
@@ -266,34 +270,34 @@ function setPlayerElementPosition(width) {
 			_playerBoxDom.style.right = playerShow === 'none' ? 20 - width + 'px' : 86 - width + 'px';
 		}
 		if (playerShow === 'cover') {
-			document.getElementById('amplitude-player').style.width = '86px';
+			$id('amplitude-player').style.width = '86px';
 		} else {
-			document.getElementById('amplitude-player').style.width = '20px';
+			$id('amplitude-player').style.width = '20px';
 		}
 	}
 	// 设置播放器副体长度
 	_playerBoxDom.style.width = width + 'px';
 	// 设置副体容器长度
-	Array.from(document.getElementsByClassName('player-container'))[0].style.width = width - 20 + 'px';
+	Array.from($class('player-container'))[0].style.width = width - 20 + 'px';
 	// 设置播放器歌单是否默认展开
 	listExpand
-		? (document.getElementById('amplitude-player-song-list').style.height = listHeight + 'px')
-		: (document.getElementById('amplitude-player-song-list').style.height = 0);
+		? ($id('amplitude-player-song-list').style.height = listHeight + 'px')
+		: ($id('amplitude-player-song-list').style.height = 0);
 	// 设置播放器歌单高度
-	document.getElementById('list1').style.height = listHeight + 'px';
+	$id('list1').style.height = listHeight + 'px';
 	// 根据播放器长度设置子元素样式
 	if (width < 360) {
-		Array.from(document.getElementsByClassName('right-container'))[0].style.flexDirection = 'column';
-		Array.from(document.getElementsByClassName('amplitude-volume-slider'))[0].style.display = 'none';
-		Array.from(document.getElementsByClassName('ms-range-fix'))[0].style.display = 'none';
+		Array.from($class('right-container'))[0].style.flexDirection = 'column';
+		Array.from($class('amplitude-volume-slider'))[0].style.display = 'none';
+		Array.from($class('ms-range-fix'))[0].style.display = 'none';
 	} else if (width < 720) {
-		Array.from(document.getElementsByClassName('right-container'))[0].style.flexDirection = 'column';
-		Array.from(document.getElementsByClassName('amplitude-volume-slider'))[0].style.display = '';
-		Array.from(document.getElementsByClassName('ms-range-fix'))[0].style.display = '';
-		document.getElementById('volume-container').style.width = '30%';
+		Array.from($class('right-container'))[0].style.flexDirection = 'column';
+		Array.from($class('amplitude-volume-slider'))[0].style.display = '';
+		Array.from($class('ms-range-fix'))[0].style.display = '';
+		$id('volume-container').style.width = '30%';
 	} else {
-		document.getElementById('volume-container').style.width = '30%';
-		Array.from(document.getElementsByClassName('right-container'))[0].style.flexDirection = 'row';
+		$id('volume-container').style.width = '30%';
+		Array.from($class('right-container'))[0].style.flexDirection = 'row';
 	}
 
 	clickSetElementStyle(width);
@@ -307,10 +311,10 @@ function setSongListPosition(width) {
 	// 获取播放器在页面上的坐标位置
 	let _bodyHeight = window.innerHeight;
 	let _bodyWidth = window.innerWidth;
-	let _amplitude = document.getElementById('amplitude-player');
+	let _amplitude = $id('amplitude-player');
 	let _top = _amplitude.offsetTop;
 	let _left = _amplitude.offsetLeft;
-	let _songListDom = document.getElementById('amplitude-player-song-list');
+	let _songListDom = $id('amplitude-player-song-list');
 	_songListDom.style.width = width - 20 + 'px';
 	if (playerLeft) {
 		_songListDom.style.left = _left + 'px';
@@ -326,7 +330,7 @@ function setSongListPosition(width) {
 		_songListDom.style.top = '';
 		_songListDom.style.bottom = _bodyHeight - _top + 'px';
 	}
-	let _imgBox = document.getElementById('amplitude-player-full-screen').getElementsByClassName('img-box')[0];
+	let _imgBox = $id('amplitude-player-full-screen').getElementsByClassName('img-box')[0];
 	if (_bodyWidth < _bodyHeight - 140) {
 		_imgBox.style.width = _bodyWidth * 0.7 + 'px';
 		_imgBox.style.height = _bodyWidth * 0.7 + 'px';
@@ -341,27 +345,27 @@ function setSongListPosition(width) {
 // 播放器点击事件
 function clickSetElementStyle(width) {
 	// 切换播放方式
-	Array.from(document.getElementsByClassName('amplitude-toggle')).forEach((el) => {
+	Array.from($class('amplitude-toggle')).forEach((el) => {
 		el.addEventListener('click', () => {
 			let arr = ['order', 'list', 'song', 'random'];
 			let idx = arr.indexOf(mode);
 			mode = idx === 3 ? arr[0] : arr[idx + 1];
-			Array.from(document.getElementsByClassName('amplitude-toggle')).forEach((el) => {
+			Array.from($class('amplitude-toggle')).forEach((el) => {
 				el.style.display = 'none';
 			});
 			if (mode === 'order') {
-				Array.from(document.getElementsByClassName('amplitude-repeat')).forEach((el) => {
+				Array.from($class('amplitude-repeat')).forEach((el) => {
 					el.style.display = '';
 				});
 				Amplitude.setRepeat(false);
 			}
 			if (mode === 'list') {
-				Array.from(document.getElementsByClassName('amplitude-repeat')).forEach((el) => {
+				Array.from($class('amplitude-repeat')).forEach((el) => {
 					el.style.display = '';
 				});
 			}
 			if (mode === 'song') {
-				Array.from(document.getElementsByClassName('amplitude-repeat-song')).forEach((el) => {
+				Array.from($class('amplitude-repeat-song')).forEach((el) => {
 					el.style.display = '';
 				});
 				Amplitude.setRepeatSong();
@@ -370,7 +374,7 @@ function clickSetElementStyle(width) {
 				}, 800);
 			}
 			if (mode === 'random') {
-				Array.from(document.getElementsByClassName('amplitude-shuffle')).forEach((el) => {
+				Array.from($class('amplitude-shuffle')).forEach((el) => {
 					el.style.display = '';
 				});
 				Amplitude.setShuffle(true);
@@ -378,14 +382,14 @@ function clickSetElementStyle(width) {
 		});
 	});
 	// 监听整个播放器，根据当前播放状态设置全屏中歌曲图片的转动
-	Array.from(document.getElementsByClassName('amplitude-player-component')).forEach((el) => {
+	Array.from($class('amplitude-player-component')).forEach((el) => {
 		el.addEventListener('click', () => {
 			monitorPlayerState();
 		});
 	});
 	// 改变进度条显示当前歌曲播放的时间
 	let state;
-	Array.from(document.getElementsByClassName('amplitude-song-slider')).forEach((el) => {
+	Array.from($class('amplitude-song-slider')).forEach((el) => {
 		el.addEventListener('mousedown', () => {
 			state = Amplitude.getPlayerState() === 'playing';
 			Amplitude.pause();
@@ -398,43 +402,43 @@ function clickSetElementStyle(width) {
 		});
 	});
 	// 打开全屏
-	Array.from(document.getElementsByClassName('left-container'))[0].addEventListener('click', () => {
-		document.getElementById('amplitude-player-full-screen').style.top = 0;
+	Array.from($class('left-container'))[0].addEventListener('click', () => {
+		$id('amplitude-player-full-screen').style.top = 0;
 	});
 	// 关闭全屏
-	Array.from(document.getElementsByClassName('close-btn'))[0].addEventListener('click', () => {
-		document.getElementById('amplitude-player-full-screen').style.top = '';
+	Array.from($class('close-btn'))[0].addEventListener('click', () => {
+		$id('amplitude-player-full-screen').style.top = '';
 	});
 	// 点击隐藏显示歌单
-	document.getElementById('amplitude-menu').addEventListener('click', () => {
-		let _songListDom = document.getElementById('amplitude-player-song-list');
+	$id('amplitude-menu').addEventListener('click', () => {
+		let _songListDom = $id('amplitude-player-song-list');
 		_songListDom.style.height = _songListDom.offsetHeight === 0 ? listHeight + 'px' : 0;
 	});
 	// 全局点击监听
-	document.getElementById('amplitude-player-full-screen').addEventListener('click', () => {
-		document.getElementById('list2').classList.remove('hide');
+	$id('amplitude-player-full-screen').addEventListener('click', () => {
+		$id('list2').classList.remove('hide');
 		monitorPlayerState();
 	});
 	// 点击歌名显示二级歌单
-	document.getElementById('menu2').addEventListener('click', (e) => {
-		document.getElementById('list2').classList.toggle('hide');
+	$id('menu2').addEventListener('click', (e) => {
+		$id('list2').classList.toggle('hide');
 		e.stopPropagation();
 	});
 	// 点击隐藏按钮事
-	Array.from(document.getElementsByClassName('hide-btn')).forEach((el) => {
+	Array.from($class('hide-btn')).forEach((el) => {
 		el.addEventListener('click', () => {
-			let _playerBoxDom = Array.from(document.getElementsByClassName('player-box'))[0];
-			let _playerDom = document.getElementById('amplitude-player');
+			let _playerBoxDom = Array.from($class('player-box'))[0];
+			let _playerDom = $id('amplitude-player');
 			if (hideBtnState) {
 				hideBtnState = false;
-				document.getElementById('amplitude-player-song-list').style.height = 0;
+				$id('amplitude-player-song-list').style.height = 0;
 				if (_playerDom.offsetWidth === width) {
 					if (playerShow === 'cover') _playerDom.style.width = '86px';
 					else _playerDom.style.width = '20px';
 				} else {
 					_playerDom.style.width = width + 'px';
 				}
-				document.getElementsByClassName('hide-btn')[0].classList.toggle('turn');
+				$class('hide-btn')[0].classList.toggle('turn');
 				if (playerLeft !== undefined) {
 					if (_playerBoxDom.style.left === '0px') {
 						_playerBoxDom.style.left = playerShow === 'cover' ? 86 - width + 'px' : 20 - width + 'px';
@@ -480,7 +484,7 @@ window.onresize = () => {
 	let _bodyWidth = window.innerWidth;
 	let tempDom = document.createElement('div');
 	tempDom.style.width = playerWidth;
-	document.querySelector('html').appendChild(tempDom);
+	$('html').appendChild(tempDom);
 	let _playerWidth = tempDom.offsetWidth;
 	if (_bodyWidth < _playerWidth) {
 		setPlayerElementPosition(_bodyWidth);

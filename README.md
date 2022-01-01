@@ -62,10 +62,10 @@ new zymAplayer({
 ```json
 [
     {
-        "name": "ベースラインやってる？笑",  --- 歌曲名称
-        "artist": "ななひら",       --- 歌曲作者
-        "url": "/music/song/ななひら - ベースラインやってる？笑.mp3",  --- 歌曲地址，可使用外网地址（http、https）
-        "cover_art_url": "/music/img/ベースラインやってる？笑.jpg"     --- 歌曲图片
+        "name": "ベースラインやってる？笑",  //  歌曲名称
+        "artist": "ななひら",       //  歌曲作者
+        "url": "/music/song/ななひら - ベースラインやってる？笑.mp3",  //  歌曲地址，可使用外网地址（http、https）
+        "cover_art_url": "/music/img/ベースラインやってる？笑.jpg"     //  歌曲图片，可使用外网地址（http、https）
     },
     {
         "name": "Reality",

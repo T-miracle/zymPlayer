@@ -1,0 +1,30 @@
+[
+    {
+        "name": "ベースラインやってる？笑",
+        "artist": "ななひら",
+        "url": "/music/song/ななひら - ベースラインやってる？笑.mp3",
+        "cover_art_url": "/music/img/ベースラインやってる？笑.jpg",
+        "duration": "04:46"
+    },
+    {
+        "name": "魔法闘姫フロスティア-School BGM",
+        "artist": "ShiBoo!",
+        "url": "/music/song/魔法斗姬芙洛蒂亚-学校背景乐.mp3",
+        "cover_art_url": "/music/img/魔法斗姬芙洛蒂亚.jpg",
+        "duration": "01:03"
+    },
+    {
+        "name": "崩坏3游戏大厅-ACE",
+        "artist": "梨花三音",
+        "url": "/music/song/梨花三音 - 崩坏3游戏大厅-ACE.mp3",
+        "cover_art_url": "/music/img/Ace.jpg",
+        "duration": "01:31"
+    },
+    {
+        "name": "Reality",
+        "artist": "Lost Frequencies / Janieck",
+        "url": "/music/song/Lost Frequencies; Janieck - Reality.mp3",
+        "cover_art_url": "/music/img/Reality.jpg",
+        "duration": "02:39"
+    }
+]

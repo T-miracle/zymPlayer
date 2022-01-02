@@ -317,11 +317,14 @@ function setSongListPosition(width) {
 	let _left = _amplitude.offsetLeft;
 	let _songListDom = $id('amplitude-player-song-list');
 	_songListDom.style.width = width - 20 + 'px';
+	console.log(playerShow);
 	if (playerLeft) {
 		_songListDom.style.left = _left + 'px';
 		_songListDom.style.right = '';
 	} else {
-		_songListDom.style.left = _left + 20 + 'px';
+		playerShow === 'all' && (_songListDom.style.left = _left + 20 + 'px');
+		playerShow === 'none' && (_songListDom.style.left = _left + 20 - width + 20 + 'px');
+		playerShow === 'cover' && (_songListDom.style.left = _left + 20 - width + 86 + 'px');
 		_songListDom.style.right = '';
 	}
 	if (_top < _bodyHeight - _top - 66) {

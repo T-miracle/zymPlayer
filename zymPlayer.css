@@ -626,6 +626,8 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
 }
 
 #amplitude-player-song-list div#list1 div.song span.song-select {
@@ -1222,6 +1224,8 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
 }
 
 #amplitude-player-full-screen div#list2 div.song span.song-select {

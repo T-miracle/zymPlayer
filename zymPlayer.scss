@@ -572,6 +572,7 @@
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
+			box-sizing: content-box;
 
 			span.song-select {
 				display: inline-block;
@@ -1097,6 +1098,7 @@
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
+			box-sizing: content-box;
 
 			span.song-select {
 				display: inline-block;

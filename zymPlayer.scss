@@ -527,41 +527,41 @@
 	transition: height 0.2s ease;
 	font-family: Arial, Helvetica, sans-serif;
 
-	/*控制整个滚动条*/
-	::-webkit-scrollbar {
-		background-color: rgb(240, 240, 240);
-		width: 6px;
-		height: 6px;
-		background-clip: padding-box;
-	}
-
-	/*滚动条两端方向按钮*/
-	::-webkit-scrollbar-button {
-		display: none;
-	}
-
-	/*滚动条中间滑动部分*/
-	::-webkit-scrollbar-thumb {
-		background-color: #00a0ff;
-	}
-
-	/*滚动条右下角区域*/
-	::-webkit-scrollbar-corner {
-		background-color: white;
-	}
-
-	/* 火狐滚动条 */
-	& {
-		scrollbar-width: thin;
-		scrollbar-color: #00a0ff rgb(240, 240, 240);
-		/* 第一个滚轮颜色，第二个滚动条背景色 */
-	}
-
 	div#list1 {
 		position: absolute;
 		width: 100%;
 		overflow-y: scroll;
 		background-color: white;
+
+		/*控制整个滚动条*/
+		&::-webkit-scrollbar {
+			background-color: rgb(240, 240, 240);
+			width: 6px;
+			height: 6px;
+			background-clip: padding-box;
+		}
+
+		/*滚动条两端方向按钮*/
+		&::-webkit-scrollbar-button {
+			display: none;
+		}
+
+		/*滚动条中间滑动部分*/
+		&::-webkit-scrollbar-thumb {
+			background-color: #00a0ff;
+		}
+
+		/*滚动条右下角区域*/
+		&::-webkit-scrollbar-corner {
+			background-color: white;
+		}
+
+		/* 火狐滚动条 */
+		& {
+			scrollbar-width: thin;
+			scrollbar-color: #00a0ff rgb(240, 240, 240);
+			/* 第一个滚轮颜色，第二个滚动条背景色 */
+		}
 
 		div.song {
 			cursor: pointer;
@@ -1059,7 +1059,7 @@
 		}
 
 		/*控制整个滚动条*/
-		::-webkit-scrollbar {
+		&::-webkit-scrollbar {
 			background-color: rgb(240, 240, 240);
 			width: 6px;
 			height: 6px;
@@ -1067,17 +1067,17 @@
 		}
 
 		/*滚动条两端方向按钮*/
-		::-webkit-scrollbar-button {
+		&::-webkit-scrollbar-button {
 			display: none;
 		}
 
 		/*滚动条中间滑动部分*/
-		::-webkit-scrollbar-thumb {
+		&::-webkit-scrollbar-thumb {
 			background-color: #00a0ff;
 		}
 
 		/*滚动条右下角区域*/
-		::-webkit-scrollbar-corner {
+		&::-webkit-scrollbar-corner {
 			background-color: white;
 		}
 

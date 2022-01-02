@@ -14,6 +14,8 @@ gitbook插件版：https://github.com/T-miracle/gitbook-plugin-zymplayer
 
 ![](img/fullScreen.png)
 
+![](img/show.gif)
+
 ## 安装方式
 
 - css引入

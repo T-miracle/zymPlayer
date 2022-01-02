@@ -1,3 +1,4 @@
+/* https://github.com/T-miracle/zymPlayer */
 const $ = document.querySelector.bind(document),
 	$$ = document.querySelectorAll.bind(document),
 	$id = document.getElementById.bind(document),
@@ -238,8 +239,8 @@ function setPlayerElementPosition(width) {
 		_playerBoxDom.style.left = '';
 		_playerBoxDom.style.right = 0;
 		_playerBoxDom.insertAdjacentHTML('afterbegin', '<div class="hide-btn"></div>');
-		Array.from($class('left-container')).style.float = 'left';
-		Array.from($class('right-container')).style.float = 'left';
+		Array.from($class('left-container'))[0].style.float = 'left';
+		Array.from($class('right-container'))[0].style.float = 'left';
 	}
 	if (playerRight !== undefined) {
 		let _playerDom = $id('amplitude-player');
@@ -260,7 +261,7 @@ function setPlayerElementPosition(width) {
 		let _playerDom = $id('amplitude-player');
 		_playerDom.style.width = width + 'px';
 	} else {
-		Array.from($class('hide-btn')).classList.toggle('turn');
+		Array.from($class('hide-btn'))[0].classList.toggle('turn');
 		listExpand = false;
 		if (playerLeft !== undefined) {
 			_playerBoxDom.style.left = playerShow === 'none' ? 20 - width + 'px' : 86 - width + 'px';

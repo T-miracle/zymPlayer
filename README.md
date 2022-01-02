@@ -1,10 +1,20 @@
-# 使用说明
+# 章鱼喵HTML5网页音乐播放器
+
+基于开源库[amplitudeJS](https://github.com/serversideup/amplitudejs)编写
+
+## 版本
+
+gitbook插件版：https://github.com/T-miracle/gitbook-plugin-zymplayer
+
+## 页面展示
 
 ![](img/zymPlayer.png)
 
 点击封面可进入全屏模式
 
 ![](img/fullScreen.png)
+
+## 安装方式
 
 - css引入
 

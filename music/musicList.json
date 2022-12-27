@@ -2,169 +2,29 @@
     {
         "name": "崩坏3游戏大厅-ACE",
         "artist": "梨花三音",
-        "url": "/music/song/梨花三音 - 崩坏3游戏大厅-ACE.mp3",
-        "cover_art_url": "/music/img/Ace.jpg",
+        "url": "./zymPlayer/music/song/梨花三音 - 崩坏3游戏大厅-ACE.mp3",
+        "cover_art_url": "./zymPlayer/music/img/Ace.jpg",
         "duration": "01:31"
     },
     {
         "name": "Reality",
         "artist": "Lost Frequencies / Janieck",
-        "url": "/music/song/Lost Frequencies; Janieck - Reality.mp3",
-        "cover_art_url": "/music/img/Reality.jpg",
+        "url": "./zymPlayer/music/song/Lost Frequencies; Janieck - Reality.mp3",
+        "cover_art_url": "./zymPlayer/music/img/Reality.jpg",
         "duration": "02:39"
-    },
-    {
-        "name": "Diamond Cut Diamond (Original Mix)",
-        "artist": "Worry Free Studios / Grimmmz / United Idol",
-        "url": "/music/song/Worry Free Studios,Grimmmz,United Idol - Diamond Cut Diamond (Original Mix).flac",
-        "cover_art_url": "/music/img/Diamond Cut Diamond.jpg",
-        "duration": "03:34"
     },
     {
         "name": "魔法闘姫フロスティア-School BGM",
         "artist": "ShiBoo!",
-        "url": "/music/song/魔法斗姬芙洛蒂亚-学校背景乐.mp3",
-        "cover_art_url": "/music/img/魔法斗姬芙洛蒂亚.jpg",
+        "url": "./zymPlayer/music/song/魔法斗姬芙洛蒂亚-学校背景乐.mp3",
+        "cover_art_url": "./zymPlayer/music/img/魔法斗姬芙洛蒂亚.jpg",
         "duration": "01:03"
     },
     {
         "name": "ベースラインやってる？笑",
         "artist": "ななひら",
-        "url": "/music/song/ななひら - ベースラインやってる？笑.mp3",
-        "cover_art_url": "/music/img/ベースラインやってる？笑.jpg",
+        "url": "./zymPlayer/music/song/ななひら - ベースラインやってる？笑.mp3",
+        "cover_art_url": "./zymPlayer/music/img/ベースラインやってる？笑.jpg",
         "duration": "04:46"
-    },
-    {
-        "name": "Time Machine",
-        "artist": "Waterflame",
-        "url": "/music/song/Waterflame - Time Machine.mp3",
-        "cover_art_url": "/music/img/Time Machine.jpg",
-        "duration": "04:36"
-    },
-    {
-        "name": "BLOODY STREAM ~ mito remix ver",
-        "artist": "市川貢",
-        "url": "/music/song/市川貢 - BLOODY STREAM ～mito remix ver.～ (オリジナル・カラオケ).flac",
-        "cover_art_url": "/music/img/BLOODY STREAM.jpg",
-        "duration": "05:06"
-    },
-    {
-        "name": "おちゃめ機能",
-        "artist": "神楽七奈",
-        "url": "/music/song/おちゃめ機能.flac",
-        "cover_art_url": "/music/img/おちゃめ機能.png",
-        "duration": "01:32"
-    },
-    {
-        "name": "Monkeybiz",
-        "artist": "D1ofaquavibe",
-        "url": "/music/song/D1ofaquavibe - Monkeybiz.flac",
-        "cover_art_url": "/music/img/Monkeybiz.jpg",
-        "duration": "04:04"
-    },
-    {
-        "name": "Ankha",
-        "artist": "A k i n a",
-        "url": "/music/song/Ankha (Camel By Camel) (Instrumental).flac",
-        "cover_art_url": "/music/img/Ankha.jpg",
-        "duration": "05:25"
-    },
-    {
-        "name": "on and on",
-        "artist": "神前暁",
-        "url": "/music/song/神前暁 - on and on.mp3",
-        "cover_art_url": "/music/img/on and on.jpg",
-        "duration": "04:04"
-    },
-    {
-        "name": "Not the One",
-        "artist": "DJ HAI CENA",
-        "url": "/music/song/DJ HAI CENA - Not the One.mp3",
-        "cover_art_url": "/music/img/Not the One.jpg",
-        "duration": "03:11"
-    },
-    {
-        "name": "我一定要得到你",
-        "artist": "筷子兄弟",
-        "url": "/music/song/筷子兄弟 - 我一定要得到你.flac",
-        "cover_art_url": "/music/img/我一定要得到你.jpg",
-        "duration": "03:24"
-    },
-    {
-        "name": "D.I.S.C.O",
-        "artist": "N-Trance",
-        "url": "/music/song/N-Trance - D.I.S.C.O.flac",
-        "cover_art_url": "/music/img/D.I.S.C.O.png",
-        "duration": "04:23"
-    },
-    {
-        "name": "Feel the Jank (extended)",
-        "artist": "Adhesive Wombat",
-        "url": "/music/song/Adhesive Wombat - Feel the Jank (extended).flac",
-        "cover_art_url": "/music/img/Feel the Jank (extended).jpg",
-        "duration": "03:16"
-    },
-    {
-        "name": "Alejandro",
-        "artist": "Vitamin String Quartet",
-        "url": "/music/song/Vitamin String Quartet - Alejandro.flac",
-        "cover_art_url": "/music/img/Alejandro.jpg",
-        "duration": "03:15"
-    },
-    {
-        "name": "DisChipo",
-        "artist": "FantomenK",
-        "url": "/music/song/FantomenK - DisChipo.mp3",
-        "cover_art_url": "/music/img/DisChipo.jpg",
-        "duration": "05:18"
-    },
-    {
-        "name": "Morsmordre",
-        "artist": "Crazy Donkey",
-        "url": "/music/song/Crazy Donkey - Morsmordre.flac",
-        "cover_art_url": "/music/img/Morsmordre.jpg",
-        "duration": "03:37"
-    },
-    {
-        "name": "Remember (Original Mix)",
-        "artist": "Sensitive & Bogdan Bondarenko",
-        "url": "/music/song/Remember (Original Mix).mp3",
-        "cover_art_url": "/music/img/Remember (Original Mix).jpg",
-        "duration": "05:37"
-    },
-    {
-        "name": "Infinite",
-        "artist": "Lensko",
-        "url": "/music/song/Lensko - Infinite.mp3",
-        "cover_art_url": "/music/img/infinite.jpg",
-        "duration": "03:52"
-    },
-    {
-        "name": "GBL ♂ 男神殿",
-        "artist": "咖啡師qwq",
-        "url": "/music/song/咖啡師qwq - GBL ♂ 男神殿.mp3",
-        "cover_art_url": "/music/img/GBL ♂ 男神殿.jpg",
-        "duration": "01:53"
-    },
-    {
-        "name": "エグスプロージョン",
-        "artist": "EGU-SPLOSION",
-        "url": "/music/song/エグスプロージョン.flac",
-        "cover_art_url": "/music/img/エグスプロージョン.png",
-        "duration": "02:20"
-    },
-    {
-        "name": "(8-bit／chiptune) Funky Stars (Hybrid song)",
-        "artist": "Quazar",
-        "url": "/music/song/Various Artists - Quazar (8-bit／chiptune)  Funky Stars (Hybrid song).mp3",
-        "cover_art_url": "/music/img/Quazar (8-bit／chiptune)  Funky Stars (Hybrid song).png",
-        "duration": "02:20"
-    },
-    {
-        "name": "Золото",
-        "artist": "未知",
-        "url": "/music/song/Золото.mp3",
-        "cover_art_url": "/music/img/Золото.png",
-        "duration": "03:48"
     }
 ]
